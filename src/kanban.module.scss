@@ -15,6 +15,24 @@
           margin: 10px 0 20px;
       }
 
-      
+      &__content {
+        font-size: 1.2rem;
+        margin-left:10px;
+          & > * ~ * {
+              margin-top: 10px;
+          }
+          .itemContent{
+            margin:5px;
+            padding:5px;
+            &:hover {
+                box-shadow: 0 0 0 2px rgb(83, 83, 83);
+                border-radius: 10px;
+                svg{
+                    fill: rgb(124, 124, 124); 
+                }
+            }
+            
+          }
+      }
   } 
 }
