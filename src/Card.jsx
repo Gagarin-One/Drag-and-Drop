@@ -3,7 +3,8 @@ import s from './Card.module.scss'
 const Card = props => {
     return (
         <div className={s.Card}>
-            {props.children}
+            <p style={{maxWidth:'220px'}}>{props.children}</p>
+            
         </div>
     )
 }

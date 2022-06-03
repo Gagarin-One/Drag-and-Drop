@@ -4,6 +4,7 @@
 
   .section {
       width: 400px;
+      max-width: 400px;
       background-color: #383838;
       padding: 10px;
       border-radius: 10px;
@@ -33,6 +34,17 @@
             }
             
           }
+      }
+      .headTitle{
+          display:flex;
+          justify-content: space-between;
+          cursor: pointer;
+            svg{
+                margin:15px 15px;
+                &:hover{
+                    fill: rgb(124, 124, 124); 
+                }
+            }
       }
       input{
           width:170px;
