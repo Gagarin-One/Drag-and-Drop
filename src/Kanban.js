@@ -1,7 +1,7 @@
 import s from './kanban.module.scss'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import mockData from './mockData'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from './Card'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -87,7 +87,7 @@ const deleteTask = (sectionIndex,deleteTaskId) => {
 const addTask = (sectionIndex) => {
     const Task = {
         id: uuidv4(),
-        title: '',
+        title: 'New task',
         isEdit:true
     }
     let arrOfTasks = [...data[sectionIndex].tasks]
@@ -97,6 +97,18 @@ const addTask = (sectionIndex) => {
     ArrayOfSection.splice(sectionIndex,1,changedData)
     setData(ArrayOfSection)
 }
+
+// if the content of the task is empty
+// and is not in the editing mode, the task will be deleted
+useEffect(() => {
+    for (let i = 0; i < data.length; i++){
+        for (let j = 0; j < data[i].tasks.length; j++){
+            if (data[i].tasks[j].isEdit===false && data[i].tasks[j].title ===''){
+                deleteTask(i,j)
+            }
+        }
+    }
+})
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
@@ -122,8 +134,9 @@ const addTask = (sectionIndex) => {
                                     </div>
 
                                     <div className={s.section__content}>
-                                        {section.tasks.map((task, taskIndex) => (
-                                                <Draggable
+                                        {
+                                        section.tasks.map((task, taskIndex) => (
+                                        <Draggable
                                                     key={task.id}
                                                     draggableId={task.id}
                                                     index={taskIndex}
