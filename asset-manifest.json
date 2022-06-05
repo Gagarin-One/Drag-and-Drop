@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Gagarin-One/Drag-and-Drop/static/css/main.7d63e660.css",
-    "main.js": "/Gagarin-One/Drag-and-Drop/static/js/main.0e4b1d96.js",
+    "main.js": "/Gagarin-One/Drag-and-Drop/static/js/main.32579a19.js",
     "index.html": "/Gagarin-One/Drag-and-Drop/index.html",
     "main.7d63e660.css.map": "/Gagarin-One/Drag-and-Drop/static/css/main.7d63e660.css.map",
-    "main.0e4b1d96.js.map": "/Gagarin-One/Drag-and-Drop/static/js/main.0e4b1d96.js.map"
+    "main.32579a19.js.map": "/Gagarin-One/Drag-and-Drop/static/js/main.32579a19.js.map"
   },
   "entrypoints": [
     "static/css/main.7d63e660.css",
-    "static/js/main.0e4b1d96.js"
+    "static/js/main.32579a19.js"
   ]
 }
