@@ -20,9 +20,16 @@ const Kanban = () => {
 
             const sourceCol = data[sourceColIndex]
             const destinationCol = data[destinationColIndex]
+            
             // writing down the item that has been moved
             const sourceTask = [...sourceCol.tasks]
             const destinationTask = [...destinationCol.tasks]
+
+            // for(let i = 0; i < sourceCol.tasks.length; i++) {
+            //     if(sourceCol.tasks[i].isEdit === true) {
+            //         ChangeEditMode(sourceColIndex,i)
+            //     }
+            // }
 
             const [removed] = sourceTask.splice(source.index, 1)
             destinationTask.splice(destination.index, 0, removed)

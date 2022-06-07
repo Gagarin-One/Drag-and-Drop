@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Kanban from "./Kanban";
 import './App.scss'
 
-
 function App() {
   return (
     <div style={{ padding: '50px' }}>
