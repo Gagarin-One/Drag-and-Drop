@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Drag-and-drop board
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Kanban board based on [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) technology.
 
-## Available Scripts
+<img width="1344" alt="image" src="https://user-images.githubusercontent.com/92833239/172754146-bbd5af04-a76f-4cd6-b5ab-03b2c1bd8273.png">
 
-In the project directory, you can run:
+## Deployment
+### Click [here](https://gagarin-one.github.io/Drag-and-Drop/) to view the deployment
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![some](https://media.giphy.com/media/kD3qpN0pnc58KsAQoE/giphy.gif)
+## Technologies
+Project is created with:
+  Create react app
+* React version:18.1.0
+* Redux 
+* Redux-thunk
+* Typescript
+* Scss
+* Axios
+## Problems that have arisen
+<img width="926" alt="image" src="https://user-images.githubusercontent.com/92833239/172647077-8904c542-4e64-4dcd-adcd-eeefc1431b72.png">
+<p>I used the "Mock Api" as the server api. It has several conventions (it automatically sets the id for elements, which makes it difficult to find elements between different arrays), I had to do additional checks for additional ones when making requests to the server.</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+```
+for (let i = 0; i < getState().MainReducer.ShoppingCard.length; i++)
+    {if(getState().MainReducer.ShoppingCard[i].data.ProductId === obj.data.ProductId){
+      UpdateQuantityInShopCard(obj,getState().MainReducer.ShoppingCard[i].id)
+        }
+      }
+    }
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>In this project several elements are absolutely located (position: absolute), there was a difference when displaying elements in safari and chrome, which I solved for safari in the following way</p>	
 
-### `npm run build`
+```
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+    .shop { 
+      margin-top:clamp(100px, 25vw, 300px);
+    }
+}}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup
+To run this project, install it locally using npm:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+$ cd ../Planterplaneter
+$ npm install
+$ npm start
+```
