@@ -8,39 +8,54 @@ Kanban board based on [react-beautiful-dnd](https://github.com/atlassian/react-b
 ### Click [here](https://gagarin-one.github.io/Drag-and-Drop/) to view the deployment
 
 
-![some](https://media.giphy.com/media/kD3qpN0pnc58KsAQoE/giphy.gif)
+![some](https://media.giphy.com/media/i8qL25qtq3VnVCWTCo/giphy.gif)
 ## Technologies
 Project is created with:
   Create react app
-* React version:18.1.0
-* Redux 
-* Redux-thunk
-* Typescript
+* React version: 17.1.0
 * Scss
-* Axios
+* uuid
+* react-beautiful-dnd: 13.1.0
 ## Problems that have arisen
-<img width="926" alt="image" src="https://user-images.githubusercontent.com/92833239/172647077-8904c542-4e64-4dcd-adcd-eeefc1431b72.png">
-<p>I used the "Mock Api" as the server api. It has several conventions (it automatically sets the id for elements, which makes it difficult to find elements between different arrays), I had to do additional checks for additional ones when making requests to the server.</p>
+<p>Оne of the first problems was the incompatibility of one of the components with react version 18, so the application is deployed on version 17 of react</p>
 
+<p>Another problem was writing the basic logic for setting tasks to the correct positions</p>	
 
 ```
-for (let i = 0; i < getState().MainReducer.ShoppingCard.length; i++)
-    {if(getState().MainReducer.ShoppingCard[i].data.ProductId === obj.data.ProductId){
-      UpdateQuantityInShopCard(obj,getState().MainReducer.ShoppingCard[i].id)
-        }
-      }
+//if the transferred item is moved to another section
+        if (source.droppableId !== destination.droppableId) {
+            //find section id
+            const sourceColIndex = data.findIndex(e => e.id === source.droppableId)
+            const destinationColIndex = data.findIndex(e => e.id === destination.droppableId)
+
+            const sourceCol = data[sourceColIndex]
+            const destinationCol = data[destinationColIndex]
+            
+            // writing down the item that has been moved
+            const sourceTask = [...sourceCol.tasks]
+            const destinationTask = [...destinationCol.tasks]
+
+            const [removed] = sourceTask.splice(source.index, 1)
+            destinationTask.splice(destination.index, 0, removed)
+            //swapping item
+            data[sourceColIndex].tasks = sourceTask
+            data[destinationColIndex].tasks = destinationTask
+            
+            setData(data)
+        } else {
+            //if the transferred element 
+            //is not moved to another section and it is swapped
+            //find id for section array
+            const sourceColIndex = data.findIndex(e => e.id === source.droppableId)
+            const sourceCol = data[sourceColIndex]
+            // writing copied items
+            const copiedItems = [...sourceCol.tasks]
+            const [removed] = copiedItems.splice(source.index, 1);
+            copiedItems.splice(destination.index, 0, removed);
+            data[sourceColIndex].tasks = copiedItems
+            setData(data)
+          }
     }
-```
-
-<p>In this project several elements are absolutely located (position: absolute), there was a difference when displaying elements in safari and chrome, which I solved for safari in the following way</p>	
-
-```
-@media not all and (min-resolution:.001dpcm)
-{ @supports (-webkit-appearance:none) {
-    .shop { 
-      margin-top:clamp(100px, 25vw, 300px);
-    }
-}}
 ```
 
 ## Setup
